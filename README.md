@@ -180,25 +180,25 @@ JUnit5는 가장 인기 있는 단위 테스트 프레임 워크이다. JUnit5 �
 
 *   JUnit Jupiter는 JUnit 4에서 제공하는 Assertions 기능과 더불어 Java 8의 lambda를 지원하는 Assertions 이 추가되었다.
 *   JUnit Jupiter assertions 은 `org.junit.jupiter.api.- Assertions`의 `static`로 이동되었다
-
+```java
     @Test
     void lambdaExpressions() {
-    List numbers = Arrays.asList(1, 2, 3);
-    assertTrue(numbers.stream()
-    .mapToInt(i -> i)
-    .sum() > 5, () -> "Sum should be greater than 5");
+        List numbers = Arrays.asList(1, 2, 3);
+        assertTrue(numbers.stream()
+        .mapToInt(i -> i)
+        .sum() > 5, () -> "Sum should be greater than 5");
     }
-
+```
 *   `assertAll()` 을 사용하여 Assertion 을 그룹화하여 실행 가능하다.
 ```java
     @Test
     void groupAssertions() {
-    int[] numbers = {0, 1, 2, 3, 4};
-    assertAll("numbers",
-    () -> assertEquals(numbers[0], 1),
-    () -> assertEquals(numbers[3], 3),
-    () -> assertEquals(numbers[4], 1)
-    );
+        int[] numbers = {0, 1, 2, 3, 4};
+        assertAll("numbers",
+            () -> assertEquals(numbers[0], 1),
+            () -> assertEquals(numbers[3], 3),
+            () -> assertEquals(numbers[4], 1)
+        );
     }
 ```
 ![img_4.jpg](images/img_4.jpg)
@@ -214,9 +214,9 @@ JUnit5는 가장 인기 있는 단위 테스트 프레임 워크이다. JUnit5 �
 ```java
     @Test
     void testOnlyOnDevServer() {
-    // DEV 환경 에서만 test 실행
-    assumeTrue("DEV".equals(System.getenv("ENV")));
-    assertEquals(1, "a".length(), "is always equal");
+        // DEV 환경 에서만 test 실행
+        assumeTrue("DEV".equals(System.getenv("ENV")));
+        assertEquals(1, "a".length(), "is always equal");
     }
 
     @Test
